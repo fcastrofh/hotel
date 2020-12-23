@@ -17,15 +17,12 @@ export default function index({ actions, columns = [], items = [] }) {
           <tr key={item.id}>
             {columns.map((column) => {
               if (column.render) {
-                return column.render(item[column.name]);
+                const value = item[column.name];
+                return <td key={column.name}>{column.render(value)}</td>;
               }
 
-              return (
-                <td key={column.name}>
-                  {item[column.name]}
-                </td>
-              );
-            })}
+              return <td key={column.name}>{item[column.name]}</td>;
+              })}
             <td>
               <DropDown actions={actions} item={item} title="Actions" />
             </td>
