@@ -1,9 +1,12 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import { useRouter } from 'next/router';
 import Page from '../../components/Page';
 import ListView from '../../components/ListView';
 
 export default function Gest() {
+  const router = useRouter();
+
   const columns = [
     {
       name: 'name',
@@ -33,7 +36,7 @@ export default function Gest() {
 
   return (
     <Page title="Guest">
-      <Button>Add Guest</Button>
+      <Button onClick={() => router.push('/guest/new')}>New Guest</Button>
       <ListView columns={columns} endpoint="/guest" />
     </Page>
   );
